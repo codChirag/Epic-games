@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Arcadia — Game Store Demo (Educational)</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-row">
+      <div class="brand" id="brand">
+        <a href="#" class="logo">Arcadia<span class="dot">.</span></a>
+      </div>
+
+      <nav class="nav" id="mainNav" aria-label="Main navigation">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#store" class="nav-link">Store</a>
+        <a href="#news" class="nav-link">News</a>
+        <a href="#engine" class="nav-link">Engine</a>
+      </nav>
+
+      <div class="header-actions">
+        <select id="langSelect" aria-label="Language switcher">
+          <option value="en">English</option>
+          <option value="kn">ಕನ್ನಡ</option>
+          <option value="de">Deutsch</option>
+        </select>
+
+        <button class="btn ghost" id="searchToggle" aria-label="Open search">Search</button>
+        <button class="btn" id="cartBtn" aria-label="Open cart">Cart (<span id="cartCount">0</span>)</button>
+        <button class="btn outline" id="signBtn">Sign In</button>
+        <button class="hamburger" id="menuToggle" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
+
+    <div class="search-row" id="searchRow" hidden>
+      <div class="container">
+        <input id="searchInput" placeholder="Search games, tags, developers..." aria-label="Search games">
+        <button class="btn" id="searchRun">Go</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <h1 id="heroTitle">Play. Create. Belong.</h1>
+          <p id="heroLead">Discover new games, free weekly titles, and powerful tools for creators. This is a demo educational store — built to learn web development.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#store" id="heroBrowse">Browse Store</a>
+            <button class="btn ghost" id="heroLearn">Learn More</button>
+          </div>
+
+          <div class="promo-strip" id="promoStrip">
+            <strong>Free this week:</strong> <span id="freeTitle">Pixel Odyssey - Collector's Demo</span>
+            <button class="btn tiny" id="claimFree">Claim</button>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <!-- Replace with local image: assets/hero-demo.jpg -->
+          <div class="hero-art" aria-hidden="true">[Hero Artwork — add image at assets/hero-demo.jpg]</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURE ROW -->
+    <section class="features container">
+      <div class="feature">
+        <h3 data-i18n="features.free">Weekly Free Games</h3>
+        <p data-i18n="features.freeDesc">We add a free title every week for users to download and try.</p>
+      </div>
+      <div class="feature">
+        <h3 data-i18n="features.engine">Creator Engine</h3>
+        <p data-i18n="features.engineDesc">Powerful engine and assets for developers and students to learn and create.</p>
+      </div>
+      <div class="feature">
+        <h3 data-i18n="features.backed">Secure Checkout</h3>
+        <p data-i18n="features.backedDesc">Mock checkout and local cart to simulate shopping experience.</p>
+      </div>
+    </section>
+
+    <!-- STORE -->
+    <section id="store" class="store container">
+      <div class="store-header">
+        <h2 data-i18n="store.title">Store</h2>
+
+        <div class="store-controls">
+          <label>
+            <select id="filterCategory" aria-label="Filter category">
+              <option value="all">All categories</option>
+            </select>
+          </label>
+
+          <label>
+            <select id="sortBy" aria-label="Sort by">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low → High</option>
+              <option value="price-desc">Price: High → Low</option>
+              <option value="alpha">Alphabetical</option>
+            </select>
+          </label>
+
+          <label class="toggle">
+            <input type="checkbox" id="showFree">
+            <span>Show only free</span>
+          </label>
+        </div>
+      </div>
+
+      <div id="storeGrid" class="store-grid" aria-live="polite">
+        <!-- Cards dynamically injected by app.js -->
+      </div>
+
+      <div class="pager" id="pager">
+        <button class="btn ghost" id="prevPage">Prev</button>
+        <span id="pageInfo">1 / 1</span>
+        <button class="btn ghost" id="nextPage">Next</button>
+      </div>
+    </section>
+
+    <!-- NEWS / CAROUSEL -->
+    <section id="news" class="news container">
+      <h2 data-i18n="news.title">News & Updates</h2>
+
+      <div class="carousel" id="carousel" aria-roledescription="carousel">
+        <div class="carousel-track" id="carouselTrack">
+          <!-- slides injected by app.js -->
+        </div>
+
+        <div class="carousel-controls">
+          <button class="btn ghost" id="prevSlide">Prev</button>
+          <button class="btn ghost" id="nextSlide">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LONG CONTENT (for 'lengthy project' requirement) -->
+    <section class="longform container" id="longform">
+      <h2>About this Demo Project</h2>
+      <p>This page is long intentionally: it contains documentation, developer notes, accessibility considerations, and sample JSON game data. Use it to explain your project during submission or viva.</p>
+
+      <h3>Developer Notes</h3>
+      <ol>
+        <li>Architecture: Vanilla HTML/CSS/JS — no frameworks so you can explain every line.</li>
+        <li>State: localStorage for cart & language preference.</li>
+        <li>Images: Use your own or royalty-free images placed in <code>assets/</code>.</li>
+      </ol>
+
+      <h3>Accessibility</h3>
+      <p>Aria attributes, keyboard-accessible controls, and focus outlines are included. You can expand on these in your report.</p>
+
+      <h3>Data (sample)</h3>
+      <pre id="sampleData" class="code"></pre>
+
+      <h3>Translations</h3>
+      <p>UI supports English, Kannada (ಕನ್ನಡ), and German (Deutsch). You can extend the JSON in <code>app.js</code>.</p>
+    </section>
+  </main>
+
+  <!-- CART / SIDEBAR -->
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer-header">
+      <h3>Your Cart</h3>
+      <button class="btn ghost" id="closeCart">Close</button>
+    </div>
+    <div id="cartItems" class="cart-items">
+      <!-- items -->
+    </div>
+    <div class="drawer-footer">
+      <div class="cart-total">Total: <span id="cartTotal">₹0</span></div>
+      <button class="btn primary" id="checkoutBtn">Checkout (Mock)</button>
+    </div>
+  </aside>
+
+  <!-- SIGN IN MODAL -->
+  <div class="modal" id="authModal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button class="modal-close" id="closeAuth">&times;</button>
+      <h3 id="authTitle">Sign in (Mock)</h3>
+      <form id="authForm">
+        <label>Email <input type="email" name="email" required /></label>
+        <label>Password <input type="password" name="password" required minlength="6" /></label>
+        <div class="modal-actions">
+          <button class="btn primary" type="submit">Sign In</button>
+          <button class="btn ghost" type="button" id="authCancel">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <div>© <span id="year"></span> Arcadia — Demo. For educational use only.</div>
+      <div class="footer-links">
+        <a href="#terms">Terms</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
